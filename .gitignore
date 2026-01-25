@@ -10,10 +10,6 @@
 !.yarn/releases
 !.yarn/versions
 
-# extras
-.vscode
-node_modules
-
 # testing
 /coverage
 
