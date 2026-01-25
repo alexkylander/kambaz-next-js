@@ -2,12 +2,12 @@ export default function CourseStatus() {
   return (
     <div id="wd-course-status">
       <h2>Course Status</h2>
-      <button>Unpublish</button> <button>Publish</button>
-      
-      <button>Import Existing Courses</button>
-      <button>Choose Home Page</button>
-      <button>View Course Status</button>
-      <button>New Announcement</button>
-      <button>New Analytics</button>
+      <button>Unpublish</button> <button>Publish</button> <br/>
+      <br/>
+      <button>Import Existing Courses</button><br/>
+      <button>Choose Home Page</button><br/>
+      <button>View Course Status</button><br/>
+      <button>New Announcement</button><br/>
+      <button>New Analytics</button><br/>
       <button>View Course Notifications</button>
     </div> );}
