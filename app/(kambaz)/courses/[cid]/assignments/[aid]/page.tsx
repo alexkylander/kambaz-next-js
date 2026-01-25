@@ -59,27 +59,27 @@ export default function AssignmentEditor() {
       </table> <br/>
         Online Submission Types:<br/>
         <label style={{ display: "block" }}>
-            <input type="radio" name="choice" value="option1"/>
+            <input type="checkbox" name="choice" value="option1"/>
             Text Entry
         </label>
         
         <label style={{ display: "block" }}>
-            <input type="radio" name="choice" value="option2"/>
+            <input type="checkbox" name="choice" value="option2"/>
             Website URL
         </label>
 
         <label style={{ display: "block" }}>
-            <input type="radio" name="choice" value="option3"/>
+            <input type="checkbox" name="choice" value="option3"/>
             Media Recordings
         </label>
 
         <label style={{ display: "block" }}>
-            <input type="radio" name="choice" value="option3"/>
+            <input type="checkbox" name="choice" value="option3"/>
             Student Annotations
         </label>
 
         <label style={{ display: "block" }}>
-            <input type="radio" name="choice" value="option3"/>
+            <input type="checkbox" name="choice" value="option3"/>
             File Uploads
         </label> <br/>
       <table>
