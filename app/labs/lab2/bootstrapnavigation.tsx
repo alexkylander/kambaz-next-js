@@ -1,5 +1,7 @@
 import { Nav, NavItem, NavLink } from 'react-bootstrap';
 import { Card, CardImg, CardBody, CardTitle, CardText, Button } from 'react-bootstrap';
+export function CSSTabs() {
+return (
 <div id="wd-css-navigating-with-tabs">
   <h2>Tabs</h2>
   <Nav variant="tabs">
@@ -17,6 +19,7 @@ import { Card, CardImg, CardBody, CardTitle, CardText, Button } from 'react-boot
     </NavItem>
   </Nav>
 </div>
+);}
 export function CSSCards() {
     return (
 <div id="wd-css-navigating-with-cards">

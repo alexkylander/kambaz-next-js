@@ -1,3 +1,5 @@
+export default function Margins() {
+return (
 <div id="wd-css-margins">
   <h2>Margins</h2>
   <div
@@ -13,3 +15,4 @@
                wd-border-yellow wd-border-solid wd-bg-color-blue wd-fg-color-white">
     Margin all around </div>
 </div>
+);}

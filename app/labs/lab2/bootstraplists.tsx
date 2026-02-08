@@ -1,5 +1,8 @@
+"use client"
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
-<div id="wd-css-styling-lists">
+export function StylingList() {
+  return (
+    <div id="wd-css-styling-lists">
   <h2>Favorite movies</h2>
   <ListGroup>
     <ListGroupItem active>Aliens</ListGroupItem>
@@ -9,6 +12,7 @@ import { ListGroup, ListGroupItem } from 'react-bootstrap';
     <ListGroupItem disabled>Star Wars</ListGroupItem>
   </ListGroup>
 </div>
+  );}
 
 export function HyperlinkList() {
 return (

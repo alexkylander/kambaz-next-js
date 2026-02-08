@@ -1,5 +1,6 @@
 import Table from 'react-bootstrap/Table';
-<div id="wd-css-styling-tables">
+export function StylingTables() {
+return (<div id="wd-css-styling-tables">
   <h2>Tables</h2>
   <Table>
     <thead>
@@ -15,6 +16,7 @@ import Table from 'react-bootstrap/Table';
     </tfoot>
   </Table>
 </div>
+);}
 
 export default function ResponsiveTables() {
 return (

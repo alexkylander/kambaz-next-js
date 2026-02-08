@@ -1,12 +1,33 @@
 import "./index.css";
+import ForegroundColors from "./foregroundcolors";
+import Borders from "./borders";
+import Padding from "./padding";
+import Margins from "./margins";
+import Corners from "./corners";
 import Container from 'react-bootstrap/Container';
+import Dimensions from "./dimensions"; 
+import ZIndex from "./zindex";
+import Float from "./float";
+import GridLayout from "./gridlayout";
+import Flex from "./flex";
+import MediaQueriesDemo from "./mediaqueriesdemo";
+import { PositionRelative, PositionAbsolute, PositionFixed } from "./positions";
+import ReactIconsSampler from "./reacticonssampler";
+import Link from "next/link";
+import { ResponsiveDramatic, ResponsiveGridSystem } from "./bootstrapgrids";
+import ScreenSizeLabel from "./screensizelabel";
+import ResponsiveTables, { StylingTables } from "./bootstraptables";
+import { HyperlinkList, StylingList } from "./bootstraplists";
+import { CSSAddon, CSSDropdown, CSSForm, CSSRangeSlider, CSSResponseiveFormsOne, CSSResponseiveFormsTwo, CSSSwitch } from "./bootstrapforms";
+import { CSSCards, CSSTabs } from "./bootstrapnavigation";
+
 export default function Lab2() {
   return (
     <Container>
     <div id="wd-lab2">
       <h2>Lab 2 - Cascading Style Sheets</h2>
       <h3>Styling with the STYLE attribute</h3>
-      …
+      <Link href="./lab2/tailwind" id="tailwind-btn"> Tailwind </Link> <br />
       <div id="wd-css-id-selectors">
         <h3>ID selectors</h3>
         <p id="wd-id-selector-1">
@@ -44,8 +65,37 @@ Instead of using IDs to refer to elements, you can use an elements CLASS attribu
     </div>
   </div>
 </div>
-
-
+<ForegroundColors />
+<Borders />
+<Padding />
+<Margins />
+<Corners />
+<Dimensions />
+<PositionRelative />
+<PositionAbsolute />
+<PositionFixed />
+<ZIndex />
+<Float />
+<GridLayout />
+<Flex />
+<MediaQueriesDemo />
+<ReactIconsSampler />
+<ResponsiveGridSystem />
+<ResponsiveDramatic />
+<ScreenSizeLabel />
+<StylingTables />
+<ResponsiveTables />
+<StylingList />
+<HyperlinkList />
+<CSSForm />
+<CSSDropdown />
+<CSSSwitch />
+<CSSRangeSlider />
+<CSSAddon />
+<CSSResponseiveFormsOne />
+<CSSResponseiveFormsTwo />
+<CSSTabs />
+<CSSCards />
 
     </div>
     </Container>

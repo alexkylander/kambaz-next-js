@@ -1,3 +1,5 @@
+export default function Borders() {
+return (
 <div id="wd-css-borders">
   <h2>Borders</h2>
   <p className="wd-border-fat
@@ -8,3 +10,4 @@
     Dashed thin blue border
   </p>
 </div>
+);}

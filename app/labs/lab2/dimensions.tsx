@@ -1,3 +1,5 @@
+export default function Dimensions() {
+return (
 <div id="wd-css-dimensions">
   <h2>Dimension</h2>
   <div>
@@ -15,3 +17,4 @@
       Square</div>
   </div>
 </div>
+);}
