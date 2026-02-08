@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Row, Col, Card, CardImg, CardBody, CardTitle, CardText, Button } from "react-bootstrap";
 export default function Dashboard() {
  return (
   <div id="wd-dashboard">
@@ -7,88 +8,106 @@ export default function Dashboard() {
    <h2 id="wd-dashboard-published">Published Courses (7)</h2> <hr />
    <div id="wd-dashboard-courses">
     <div className="wd-dashboard-course">
-     <Link href="/courses/1234" className="wd-dashboard-course-link">
-      <Image src="/images/reactjs.png" width={200} height={150} alt="reactjs" />
-      <div>
-       <h5> CS1234 React JS </h5>
-       <p className="wd-dashboard-course-title">
-        Full Stack software developer
-       </p>
-       <button> Go </button>
-      </div>
-     </Link>
-    </div>
-    <div className="wd-dashboard-cpp">
-     <Link href="/courses/2345" className="wd-dashboard-course-cpp">
-      <Image src="/images/cpp.png" width={200} height={150} alt="cpp" />
-      <div>
-       <h5> CS2345 C++ Programming </h5>
-       <p className="wd-dashboard-course-title">
-        C++ for Beginners
-       </p>
-       <button> Go </button>
-      </div>
-     </Link>
-    </div>
-    <div className="wd-dashboard-node_js">
-     <Link href="/courses/3456" className="wd-dashboard-course-node_js">
-      <Image src="/images/nodejs.png" width={200} height={150} alt="nodejs" />
-      <div>
-       <h5> CS3456 Node.js Programming </h5>
-       <p className="wd-dashboard-course-title">
-        Node.js for Beginners
-       </p>
-       <button> Go </button>
-      </div>
-     </Link>
-    </div>
-    <div className="wd-dashboard-algo">
-     <Link href="/courses/4567" className="wd-dashboard-course-algo">
-      <Image src="/images/algo.jpg" width={200} height={150} alt="algo" />
-      <div>
-       <h5> CS4567 Algorithms </h5>
-       <p className="wd-dashboard-course-title">
-        Suffer
-       </p>
-       <button> Go </button>
-      </div>
-     </Link>
-    </div>
-    <div className="wd-dashboard-java">
-     <Link href="/courses/5678" className="wd-dashboard-course-java">
-      <Image src="/images/java.png" width={200} height={150} alt="java" />
-      <div>
-       <h5> CS5678 Java Programming </h5>
-       <p className="wd-dashboard-course-title">
-        Learn Java
-       </p>
-       <button> Go </button>
-      </div>
-     </Link>
-    </div>
-    <div className="wd-dashboard-systems">
-     <Link href="/courses/6789" className="wd-dashboard-course-systems">
-      <Image src="/images/systems.jpg" width={200} height={150} alt="systems" />
-      <div>
-       <h5> CS6789 Systems </h5>
-       <p className="wd-dashboard-course-title">
-        Create Computer Systems
-       </p>
-       <button> Go </button>
-      </div>
-     </Link>
-    </div>
-    <div className="wd-dashboard-rust">
-     <Link href="/courses/7890" className="wd-dashboard-course-rust">
-      <Image src="/images/rust.png" width={200} height={150} alt="rust" />
-      <div>
-       <h5> CS7890 IM Rust </h5>
-       <p className="wd-dashboard-course-title">
-        Rust for Intermediates
-       </p>
-       <button> Go </button>
-      </div>
-     </Link>
+      <Row xs={1} md={5} className="g-4">
+      <Col className="wd-dashboard-course" style={{ width: "300px" }}>
+        <Card>
+        <Link href="/courses/1234/home"
+              className="wd-dashboard-course-link text-decoration-none text-dark">
+          <CardImg variant="top" src="/images/reactjs.png" width="100%" height={160}/>
+          <CardBody>
+          <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden">CS1234 React JS</CardTitle>
+          <CardText  className="wd-dashboard-course-description overflow-hidden" style={{ height: "100px" }}>
+            Full Stack software developer</CardText>
+          <Button variant="primary">Go</Button>
+          </CardBody>
+        </Link>
+        </Card>
+      </Col>
+      <Col className="wd-dashboard-course" style={{ width: "300px" }}>
+        <Card>
+        <Link href="/courses/2345/home"
+              className="wd-dashboard-course-link text-decoration-none text-dark">
+          <CardImg variant="top" src="/images/cpp.png" width="100%" height={160}/>
+          <CardBody>
+          <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden">CS2345 C++ Programming</CardTitle>
+          <CardText  className="wd-dashboard-course-description overflow-hidden" style={{ height: "100px" }}>
+            C++ For Beginners</CardText>
+          <Button variant="primary">Go</Button>
+          </CardBody>
+        </Link>
+        </Card>
+      </Col>
+      <Col className="wd-dashboard-course" style={{ width: "300px" }}>
+        <Card>
+        <Link href="/courses/3456/home"
+              className="wd-dashboard-course-link text-decoration-none text-dark">
+          <CardImg variant="top" src="/images/nodejs.png" width="100%" height={160}/>
+          <CardBody>
+          <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden">CS3456 Node.js Programming</CardTitle>
+          <CardText  className="wd-dashboard-course-description overflow-hidden" style={{ height: "100px" }}>
+            Node.js For Beginners</CardText>
+          <Button variant="primary">Go</Button>
+          </CardBody>
+        </Link>
+        </Card>
+      </Col>
+      <Col className="wd-dashboard-course" style={{ width: "300px" }}>
+        <Card>
+        <Link href="/courses/4567/home"
+              className="wd-dashboard-course-link text-decoration-none text-dark">
+          <CardImg variant="top" src="/images/algo.jpg" width="100%" height={160}/>
+          <CardBody>
+          <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden">CS4567 Algorithms</CardTitle>
+          <CardText  className="wd-dashboard-course-description overflow-hidden" style={{ height: "100px" }}>
+            Suffer</CardText>
+          <Button variant="primary">Go</Button>
+          </CardBody>
+        </Link>
+        </Card>
+      </Col>
+      <Col className="wd-dashboard-course" style={{ width: "300px" }}>
+        <Card>
+        <Link href="/courses/5678/home"
+              className="wd-dashboard-course-link text-decoration-none text-dark">
+          <CardImg variant="top" src="/images/java.png" width="100%" height={160}/>
+          <CardBody>
+          <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden">CS5678 Java Programming</CardTitle>
+          <CardText  className="wd-dashboard-course-description overflow-hidden" style={{ height: "100px" }}>
+            Learn Java</CardText>
+          <Button variant="primary">Go</Button>
+          </CardBody>
+        </Link>
+        </Card>
+      </Col>
+      <Col className="wd-dashboard-course" style={{ width: "300px" }}>
+        <Card>
+        <Link href="/courses/6789/home"
+              className="wd-dashboard-course-link text-decoration-none text-dark">
+          <CardImg variant="top" src="/images/systems.jpg" width="100%" height={160}/>
+          <CardBody>
+          <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden">CS6789 Systems</CardTitle>
+          <CardText  className="wd-dashboard-course-description overflow-hidden" style={{ height: "100px" }}>
+            Create Computer Systems</CardText>
+          <Button variant="primary">Go</Button>
+          </CardBody>
+        </Link>
+        </Card>
+      </Col>
+      <Col className="wd-dashboard-course" style={{ width: "300px" }}>
+        <Card>
+        <Link href="/courses/7890/home"
+              className="wd-dashboard-course-link text-decoration-none text-dark">
+          <CardImg variant="top" src="/images/rust.png" width="100%" height={160}/>
+          <CardBody>
+          <CardTitle className="wd-dashboard-course-title text-nowrap overflow-hidden">CS7890 IM Rust</CardTitle>
+          <CardText  className="wd-dashboard-course-description overflow-hidden" style={{ height: "100px" }}>
+            Rust for Intermediates</CardText>
+          <Button variant="primary">Go</Button>
+          </CardBody>
+        </Link>
+        </Card>
+      </Col>
+      </Row>
     </div>
    </div>
   </div>
