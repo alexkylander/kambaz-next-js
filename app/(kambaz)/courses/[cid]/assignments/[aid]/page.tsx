@@ -1,21 +1,31 @@
+"use client"
+import { assignments } from "@/app/(kambaz)/database";
+import { useParams } from "next/navigation";
+import * as db from "../../../../database";
 import { Button, Col, Form, FormCheck, FormControl, FormLabel, FormSelect, InputGroup, Row } from "react-bootstrap";
 import { FaCalendar } from "react-icons/fa";
 
 export default function AssignmentEditor() {
+    const { cid } = useParams();
+    const modules = db.modules;
   return (
+    <>
+    {assignments
+    .filter((assignment: any) => assignment.course === cid && assignment._id === useParams().aid)
+    .map((assignment: any) => (
     <div id="wd-assignments-editor">
       <div>
       <Form>
           <Col className="mb-3" id="formAssignment">
             <FormLabel column sm={2}> Assignment Name </FormLabel>
-            <Row sm={10}> <FormControl type="name" defaultValue="A1" /> </Row>
+            <Row sm={10}> <FormControl type="name" defaultValue={assignment.title} /> </Row>
           </Col>
           <Col className="mb-3" id="infoText">
-             <Row sm={10}> <FormControl type="name" defaultValue="Assignment Information" /> </Row>
+             <Row sm={10}> <FormControl type="name" defaultValue={assignment.description} /> </Row>
           </Col>
           <Row className="mb-3" id="points">
             <FormLabel column sm={2}> Points </FormLabel>
-            <Col sm={10}> <FormControl type="name" placeholder="100" /> </Col>
+            <Col sm={10}> <FormControl type="name" placeholder={assignment.points} /> </Col>
           </Row>
           <Row className="mb-3" id="assignmentGroup">
             <FormLabel column sm={2}> Assignment Group </FormLabel>
@@ -62,7 +72,7 @@ export default function AssignmentEditor() {
             <FormLabel>
               <FormLabel><strong>Due</strong></FormLabel>
               <InputGroup>
-                <FormControl id="due-calendar" defaultValue="mm/dd/yyyy" />
+                <FormControl id="due-calendar" defaultValue={assignment.due} />
                 <span className="input-group-text">
                   <FaCalendar />
                 </span>
@@ -74,7 +84,7 @@ export default function AssignmentEditor() {
             <FormLabel>
               <FormLabel><strong>Available From</strong></FormLabel>
               <InputGroup>
-                <FormControl id="start-calendar" defaultValue="mm/dd/yyyy" />
+                <FormControl id="start-calendar" defaultValue={assignment.start} />
                 <span className="input-group-text">
                   <FaCalendar />
                 </span>
@@ -85,7 +95,7 @@ export default function AssignmentEditor() {
             <FormLabel>
               <FormLabel><strong>Until</strong></FormLabel>
               <InputGroup>
-                <FormControl id="end-calendar" defaultValue="mm/dd/yyyy" />
+                <FormControl id="end-calendar" defaultValue={assignment.due} />
                 <span className="input-group-text">
                   <FaCalendar />
                 </span>
@@ -96,5 +106,7 @@ export default function AssignmentEditor() {
           <Col className="d-flex justify-content-end"> <Button variant="secondary">Cancel</Button> <Button variant="danger">Save</Button></Col>
       </Form>
     </div>
-    </div>
-);}
+    </div> ))}
+    </>
+  );
+}
