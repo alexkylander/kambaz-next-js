@@ -1,9 +1,5 @@
 "use client";
-
-
 import { useSearchParams } from "next/navigation";
-
-
 export default function QueryCalculator() {
  const searchParams = useSearchParams();
 
