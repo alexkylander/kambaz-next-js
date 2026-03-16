@@ -1,6 +1,7 @@
 import { IoEllipsisVertical } from "react-icons/io5";
 import GreenCheckmark from "./greencheckmark";
-import { FaPlus } from "react-icons/fa";
+import { FaPlus, FaTrash } from "react-icons/fa";
+import { deleteAssignment } from "./reducer";
 export default function ModuleControlButtons() {
   return (
     <div className="float-end">
