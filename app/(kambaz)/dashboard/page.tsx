@@ -39,7 +39,7 @@ export default function Dashboard() {
     <div className="wd-dashboard-course">
       <Row xs={1} md={5} className="g-4">
            {courses.map((course) => (
-     <Col className="wd-dashboard-course" style={{ width: "300px" }}>
+     <Col key={course._id} className="wd-dashboard-course" style={{ width: "300px" }}>
       <Card>
        <Link href={`/courses/${course._id}/home`}
         className="wd-dashboard-course-link text-decoration-none text-dark" >
