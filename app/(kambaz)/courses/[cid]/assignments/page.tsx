@@ -1,8 +1,9 @@
 "use client"
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import * as client from "../../client";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../../store";
-import { addAssignment, deleteAssignment, updateAssignment, editAssignment } from "./reducer";
+import { addAssignment, deleteAssignment, updateAssignment, editAssignment, setAssignments } from "./reducer";
 import { v4 as uuidv4 } from "uuid";
 import Link from "next/link";
 import { FormControl, FormGroup, FormLabel, ListGroup, ListGroupItem } from "react-bootstrap";
@@ -19,6 +20,30 @@ export default function Assignments() {
     const { modules } = useSelector((state: RootState) => state.modulesReducer);
     const { assignments } = useSelector((state: RootState) => state.assignmentReducer);
     const dispatch = useDispatch();
+    const onCreateAssignmentForCourse = async () => {
+        if (!cid) return;
+        const assignmentId = uuidv4();
+        const newAssignment = { title: assignmentTitle, course: cid };
+        const assignment = await client.onCreateAssignmentForCourse(cid as string, newAssignment);
+        dispatch(addAssignment([...assignments, { ...assignment, id: assignmentId }]));
+    };
+    const fetchAssignments = async () => {
+        if (!cid) return;
+        const assignments = await client.findAssignmentsForCourse(cid as string);
+        dispatch(setAssignments(assignments));
+    };
+    useEffect(() => {
+        fetchAssignments();
+    }, []);
+    const removeAssignment = async (assignmentId: string) => {
+        await client.deleteAssignment(assignmentId);
+        dispatch(deleteAssignment(assignmentId));
+    };
+    const onUpdateAssignment = async (assignment: any) => {
+        await client.updateAssignment(assignment);
+        const newAssignments = assignments.map((a: any) => a._id === assignment._id ? assignment : a );
+        dispatch(setAssignments(newAssignments));
+    };
     const [assignmentTitle, setAssignmentTitle] = useState("");
     const [assignmentDescription, setAssignmentDescription] = useState("");
     const [assignmentPoints, setAssignmentPoints] = useState(0);
@@ -34,7 +59,7 @@ export default function Assignments() {
     assignmentAvailableFrom={assignmentAvailableFrom} setAssignmentAvailableFrom={setAssignmentAvailableFrom} 
     assignmentAvailableUntil={assignmentAvailableUntil} setAssignmentAvailableUntil={setAssignmentAvailableUntil}
     addAssignment={() => {
-      dispatch(addAssignment({ title: assignmentTitle, course: cid }));
+      onCreateAssignmentForCourse();
         setAssignmentTitle("");
     }}
     /><br /><br /><br /><br />
@@ -43,7 +68,6 @@ export default function Assignments() {
             <BsGripVertical className="me-2 fs-3" /> <FaRegEdit className="me-2 fs-3"/> ASSIGNMENTS <ModuleControlButtons  /> </div>
       <ListGroup className="rounded-0">
     {assignments
-    .filter((assignment: any) => assignment.course === cid)
     .map((assignment: any) => (
       <ListGroupItem key={assignment._id} className="wd-module p-3 mb-3 fs-5 border-gray">
     <div className="d-flex align-items-center justify-content-between">
@@ -56,7 +80,7 @@ export default function Assignments() {
                 onChange={(e) => dispatch(updateAssignment({ ...assignment, title: e.target.value }))}
                 onKeyDown={(e) => {
                     if (e.key === "Enter") {
-                        dispatch(updateAssignment({ ...assignment, editing: false }));
+                       onUpdateAssignment(assignment);
                     }
                 }}
                 defaultValue={assignment.title}
@@ -71,9 +95,9 @@ export default function Assignments() {
         </Link>
     </div>
     <LessonControlButtons assignmentId={assignment._id} deleteAssignment={(assignmentId) => {
-                        dispatch(deleteAssignment(assignmentId));
+                        removeAssignment(assignmentId);
                       }}
-                      editAssignment={(assignmentId) => dispatch(editAssignment(assignmentId))} /> </div>
+                      editAssignment={(assignmentId) => onUpdateAssignment(assignmentId)} /> </div>
     <div className="assignment-subtext">
         <span style={{ color: "red" }}>Multiple Modules</span> | 
         <strong>Not available until</strong> {assignment.start} | 

@@ -7,7 +7,7 @@ import Breadcrumb from "./breadcrumb";
 import { useSelector } from "react-redux";
 import { useParams } from "next/navigation";
 import { RootState } from "../../store";
-export default async function CoursesLayout({ children }: { children: ReactNode }) {
+export default function CoursesLayout({ children }: { children: ReactNode }) {
  const { cid } = useParams();
   const { courses } = useSelector((state: RootState) => state.coursesReducer);
   const course = courses.find((course) => course._id === cid);
