@@ -1,14 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+type User = {
+  role: string;
+};
 
-const initialState = {
+interface AccountState {
+  currentUser: User | null;
+}
+
+const initialState: AccountState = {
   currentUser: null,
 };
 const accountSlice = createSlice({
   name: "account",
   initialState,
   reducers: {
-    setCurrentUser: (state, action) => {
+    setCurrentUser: (state, action: { payload: User | null }) => {
       state.currentUser = action.payload;
     },
   },
