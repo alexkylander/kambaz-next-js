@@ -66,6 +66,6 @@ export default function Users() {
       </select>
             <FormControl onChange={(e) => filterUsersByName(e.target.value)} placeholder="Search people"
              className="float-start w-25 me-2 wd-filter-by-name" />
-     <PeopleTable users={users} fetchUsers={fetchUsers} />
+     <PeopleTable />
    </div>
 );}

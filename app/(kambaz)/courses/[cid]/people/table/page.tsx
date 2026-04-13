@@ -1,12 +1,30 @@
 "use client"
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import { FaUserCircle } from "react-icons/fa";
 import PeopleDetails from "../details";
 import Link from "next/link";
-export default function PeopleTable({ users = [], fetchUsers }: { users?: any[]; fetchUsers: () => void; }) {
-   const [showDetails, setShowDetails] = useState(false);
+import { findUsersForCourse } from "../../../client";
+import { findAllUsers } from "@/app/(kambaz)/account/client";
+
+export default function PeopleTable({ courseId }: { courseId?: string }) {
+  const [users, setUsers] = useState<any[]>([]);
+  const fetchUsers = async () => {
+  let data;
+  console.log("Course ID:", courseId);
+  if (courseId) {
+    data = await findUsersForCourse(courseId);
+  } else {
+    data = await findAllUsers();
+  }
+
+  setUsers(data);
+  };
+  const [showDetails, setShowDetails] = useState(false);
   const [showUserId, setShowUserId] = useState<string | null>(null);
+  useEffect(() => {
+    fetchUsers();
+  }, [courseId]);
   return (
   <div id="wd-people-table">
          {showDetails && (
@@ -46,3 +64,4 @@ export default function PeopleTable({ users = [], fetchUsers }: { users?: any[];
 
    </Table>
   </div> );}
+  

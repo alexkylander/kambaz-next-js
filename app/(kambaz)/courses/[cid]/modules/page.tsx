@@ -35,7 +35,7 @@ export default function Modules() {
     dispatch(setModules(modules.filter((m: any) => m._id !== moduleId)));
   };
   const onUpdateModule = async (module: any) => {
-    await client.updateModule(module);
+    await client.updateModule(cid as string, module);
     const newModules = modules.map((m: any) => m._id === module._id ? module : m );
     dispatch(setModules(newModules));
   };

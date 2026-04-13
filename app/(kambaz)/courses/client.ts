@@ -42,10 +42,14 @@ export const deleteModule = async (moduleId: string) => {
  const response = await axiosWithCredentials.delete(`${MODULES_API}/${moduleId}`);
  return response.data;
 };
-export const updateModule = async (module: any) => {
-  const { data } = await axiosWithCredentials.put(`${MODULES_API}/${module._id}`, module);
-  return data;
+export const updateModule = async (courseId: string, module: any) => {
+ const { data } = await axios.put(
+   `${COURSES_API}/${courseId}/modules/${module._id}`,
+   module
+ );
+ return data;
 };
+
 export const findAssignmentsForCourse = async (courseId: string) => {
   const response = await axios.get(`${COURSES_API}/${courseId}/assignments`);
   return response.data;
@@ -58,10 +62,22 @@ export const onCreateAssignmentForCourse = async (courseId: string, assignment: 
   return response.data;
 }
 export const deleteAssignment = async (assignmentId: string) => {
-  const response = await axiosWithCredentials.delete(`${MODULES_API}/assignments/${assignmentId}`);
+  const response = await axiosWithCredentials.delete(`${HTTP_SERVER}/api/assignments/${assignmentId}`);
   return response.data;
 }  
 export const updateAssignment = async (assignment: any) => {
-  const { data } = await axiosWithCredentials.put(`${MODULES_API}/assignments/${assignment._id}`, assignment);
+  const { data } = await axiosWithCredentials.put(`${HTTP_SERVER}/api/assignments/${assignment._id}`, assignment);
   return data;
+};
+export const enrollIntoCourse = async (userId: string, courseId: string) => {
+ const response = await axiosWithCredentials.post(`${USERS_API}/${userId}/courses/${courseId}`);
+ return response.data;
+};
+export const unenrollFromCourse = async (userId: string, courseId: string) => {
+ const response = await axiosWithCredentials.delete(`${USERS_API}/${userId}/courses/${courseId}`);
+ return response.data;
+};
+export const findUsersForCourse = async (courseId: string) => {
+ const response = await axios.get(`${COURSES_API}/${courseId}/users`);
+ return response.data;
 };

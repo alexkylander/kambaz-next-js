@@ -22,10 +22,11 @@ export default function Assignments() {
     const dispatch = useDispatch();
     const onCreateAssignmentForCourse = async () => {
         if (!cid) return;
-        const assignmentId = uuidv4();
         const newAssignment = { title: assignmentTitle, course: cid };
         const assignment = await client.onCreateAssignmentForCourse(cid as string, newAssignment);
-        dispatch(addAssignment([...assignments, { ...assignment, id: assignmentId }]));
+        dispatch(addAssignment([...assignments, assignment]));
+
+        setAssignmentTitle("");
     };
     const fetchAssignments = async () => {
         if (!cid) return;
